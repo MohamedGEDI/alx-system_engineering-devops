@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -va --width=0 --indicator-style=slash -am
