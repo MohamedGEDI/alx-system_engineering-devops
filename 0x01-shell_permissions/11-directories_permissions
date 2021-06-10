@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R +111 ./
+find dir0/dir1/dir2 -type d -exec chmod +111 {} +
