@@ -1,2 +1,2 @@
 #!/bin/bash
-find dir0/dir1/dir2 -type d -exec chmod 751 {} +
+chmod -R a+x ./ ...
