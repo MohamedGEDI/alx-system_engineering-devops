@@ -1,2 +1,2 @@
 #!/bin/bash
-find /shell/fun_with_the_shell -type d | wc -l
+find ./ -type d | wc -l
