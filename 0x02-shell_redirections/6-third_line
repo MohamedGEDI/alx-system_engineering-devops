@@ -1,2 +1,2 @@
 #!/bin/bash
-head -4 | tail +4
+cat iacta | head -4 | tail +4
