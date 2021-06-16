@@ -1,2 +1,2 @@
 #!/bin/bash
-find -empty -delete
+find -mindepth 1 -maxdepth 0 -empty -delete
