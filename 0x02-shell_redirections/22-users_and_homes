@@ -1,2 +1,2 @@
 #!/bin/bash
-find -mindepth 1 -empty -delete
+cut -d ":" -f 1,6 /etc/passwd | sort
