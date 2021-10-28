@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#print a clock
+hour=0
+minutes=1
+while [ $hour -le 12 ]
+do
+    if [ $hour -eq 0 ] && [ $minutes -eq 1 ]
+	 then
+		 echo "Hour: 0"
+         fi
+    echo $minutes
+    minutes=$((minutes+1))
+    if [ $minutes -eq 60 ]
+	then
+	    hour=$((hour + 1 ))
+	    if [ $hour  -eq 12 ] && [ $minutes -eq 60 ]
+		then
+		    break
+		fi
+	    echo "Hour: $hour"
+	    minutes=1
+	fi
+done
