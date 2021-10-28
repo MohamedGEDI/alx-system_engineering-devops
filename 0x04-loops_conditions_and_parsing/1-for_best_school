@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#This script prits out "Best School" ten times
 for i in $(seq 0 9); do
      echo "Best School"
 done
