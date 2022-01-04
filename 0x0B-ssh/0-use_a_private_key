@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# remote connect using ssh private key
+ssh -i ~/.ssh/school ubuntu@35.227.37.173
