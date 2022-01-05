@@ -7,9 +7,9 @@ if [[ $# -ne 4 ]];
         exit 1
 fi
 
-file=$1
-ip=$2
-username=$3
-ssh=$4
+file="$1"
+ip="$2"
+username="$3"
+ssh="$4"
 
 scp -i "$ssh" "$file" "$username"@"$ip":~/
