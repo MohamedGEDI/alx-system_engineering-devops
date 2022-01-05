@@ -1,4 +1,4 @@
-
+#create a file
 file { 'school':
   path    => '/tmp/school',
   content => 'I love puppet',
