@@ -1,3 +1,18 @@
+#!/usr/bin/env bash
+#install nginx
+
+apt-get update
+apt-get -y install nginx 
+sudo mkdir -p /var/www/html
+sudo touch /var/www/html/index.html
+sudo chmod -R 777 /var/www
+sudo echo 'Hello World!' > /var/www/html/index.html
+if [ "$(pgrep -c nginx)" -le 0 ]
+then
+    sudo service nginx start
+else
+    sudo service nginx restart
+fi
 server {                                                                                                                                                 
         listen 80 default_server;                                                                                                                        
         listen [::]:80 default_server;                                                                                                                   

@@ -7,6 +7,7 @@ sudo mkdir -p /var/www/html
 sudo touch /var/www/html/index.html
 sudo chmod -R 777 /var/www
 sudo echo 'Hello World!' > /var/www/html/index.html
+
 if [ "$(pgrep -c nginx)" -le 0 ]
 then
     sudo service nginx start
