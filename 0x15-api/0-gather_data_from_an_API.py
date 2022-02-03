@@ -1,11 +1,12 @@
 #!/usr/bin/python3
+"""json file makes searching easy"""
 
 
-import sys
 import requests
+import sys
 
 if __name__ == "__main__":
-    param = 3
+    param = sys.argv[1]
     total_todos = 0
     done_todos = 0
     todos_title = []
