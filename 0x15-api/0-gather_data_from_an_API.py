@@ -2,39 +2,31 @@
 ''' task 0 module'''
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import requests
-    from sys import argv
+    import sys
 
-    emp_id = argv[1]
+    param = sys.argv[1]
     total_todos = 0
     done_todos = 0
-    done_todos_titles = []
+    todos_title = []
+    responce = requests.get(url=f"https://jsonplaceholder.typicode.com/users/{param}")
+    responce = responce.json()
+    name = responce.get('name')
 
-    res = requests.get(
-                   'https://jsonplaceholder.typicode.com/users/' +
-                   emp_id)
-    emp_name = res.json().get('name', 'user name not found')
-
-    res = requests.get(
-                   'https://jsonplaceholder.typicode.com/users/' +
-                   emp_id + '/todos')
-    emp_todos = res.json()
-
-    for todo in emp_todos:
+    second_responce = requests.get(url=f"https://jsonplaceholder.typicode.com/users/{param}/todos")
+    second_responce = second_responce.json()
+    for todos in second_responce:
         total_todos += 1
-        if todo.get('completed') is True:
+        if todos.get('completed') is True:
             done_todos += 1
-            done_todos_titles.append(todo.get(
-                                          'title',
-                                          'no title found'
-                                          ))
+            todos_title.append(todos.get('title', 'not found'))
 
     print('Employee {} is done with tasks({}/{}):'.format(
-                                                   emp_name,
-                                                   done_todos,
-                                                   total_todos
-                                                   ))
+        name,
+        done_todos,
+        total_todos
+    ))
 
-    for title in done_todos_titles:
+    for title in todos_title:
         print('\t ' + title)
