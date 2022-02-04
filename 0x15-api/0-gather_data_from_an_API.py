@@ -29,4 +29,4 @@ if __name__ == '__main__':
     ))
 
     for title in todos_title:
-        print('\t ' + title)
+        print('\t' + title)
