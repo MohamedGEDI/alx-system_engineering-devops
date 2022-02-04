@@ -1,30 +1,40 @@
 #!/usr/bin/python3
-'''A script that gathers data from an API.
-'''
-import re
-import requests
-import sys
-
-
-API_URL = 'https://jsonplaceholder.typicode.com'
-'''The API's URL.'''
+''' task 0 module'''
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            user_res = requests.get('{}/users/{}'.format(API_URL, id)).json()
-            todos_res = requests.get('{}/todos'.format(API_URL)).json()
-            user_name = user_res.get('name')
-            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
-            todos_done = list(filter(lambda x: x.get('completed'), todos))
-            print(
-                'Employee {} is done with tasks({}/{}):'.format(
-                    user_name,
-                    len(todos_done),
-                    len(todos)
-                )
-            )
-            for todo_done in todos_done:
-                print('\t {}'.format(todo_done.get('title')))
+    import requests
+    from sys import argv
+
+    emp_id = argv[1]
+    total_todos = 0
+    done_todos = 0
+    done_todos_titles = []
+
+    res = requests.get(
+                   'https://jsonplaceholder.typicode.com/users/' +
+                   emp_id)
+    emp_name = res.json().get('name', 'user name not found')
+
+    res = requests.get(
+                   'https://jsonplaceholder.typicode.com/users/' +
+                   emp_id + '/todos')
+    emp_todos = res.json()
+
+    for todo in emp_todos:
+        total_todos += 1
+        if todo.get('completed') is True:
+            done_todos += 1
+            done_todos_titles.append(todo.get(
+                                          'title',
+                                          'no title found'
+                                          ))
+
+    print('Employee {} is done with tasks({}/{}):'.format(
+                                                   emp_name,
+                                                   done_todos,
+                                                   total_todos
+                                                   ))
+
+    for title in done_todos_titles:
+        print('\t ' + title)
