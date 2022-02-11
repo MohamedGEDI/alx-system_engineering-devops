@@ -11,13 +11,11 @@ if __name__ == '__main__':
     done_todos_titles = []
 
     res = requests.get(
-        'https://jsonplaceholder.typicode.com/users/' +
-        emp_id)
+        f'https://jsonplaceholder.typicode.com/users/{emp_id}')
     emp_name = res.json().get('name', 'user name not found')
 
     res = requests.get(
-        'https://jsonplaceholder.typicode.com/users/' +
-        emp_id + '/todos')
+        f'https://jsonplaceholder.typicode.com/users/{emp_id}/todos')
     emp_todos = res.json()
 
     for todo in emp_todos:
@@ -38,12 +36,12 @@ if __name__ == '__main__':
     for title in done_todos_titles:
         print('\t ' + title)
 
-    with open('USER_ID.csv') as csv:
+    with open('USER_ID.csv', mode='w') as csv:
         for todo in emp_todos:
             total_todos += 1
             csv.write(
                 '"{}","{}","{}","{}"\n'.format(
-                    todo.get('UserId'), emp_name, todo.get('completed'),
+                    emp_id, emp_name, todo.get('completed'),
                     todo.get('title')
                 )
             )
