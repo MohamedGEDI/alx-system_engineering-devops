@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 ''' task 0 module'''
-import json
+
 
 if __name__ == '__main__':
+    import json
     import requests
     from sys import argv
 
@@ -33,3 +34,6 @@ if __name__ == '__main__':
 
     with open(file_name, 'w') as jsonfile:
         json.dump(records, jsonfile)
+
+
+    print(records[emp_id])
