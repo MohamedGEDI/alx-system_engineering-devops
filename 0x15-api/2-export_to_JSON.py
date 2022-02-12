@@ -34,6 +34,3 @@ if __name__ == '__main__':
 
     with open(file_name, 'w') as jsonfile:
         json.dump(records, jsonfile)
-
-
-    print(records[emp_id])
