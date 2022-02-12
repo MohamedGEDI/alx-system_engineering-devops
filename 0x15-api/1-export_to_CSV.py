@@ -8,6 +8,7 @@ if __name__ == '__main__':
     emp_id = argv[1]
     total_todos = 0
     done_todos = 0
+    filename = emp_id + '.csv'
     done_todos_titles = []
 
     res = requests.get(
@@ -36,7 +37,7 @@ if __name__ == '__main__':
     for title in done_todos_titles:
         print('\t ' + title)
 
-    with open('USER_ID.csv', mode='w') as csv:
+    with open(filename, mode='w') as csv:
         for todo in emp_todos:
             total_todos += 1
             csv.write(
