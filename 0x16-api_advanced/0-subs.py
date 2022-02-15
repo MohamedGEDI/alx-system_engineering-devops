@@ -7,15 +7,12 @@
 import requests
 
 
-def numbers_of_subscribers(subreddit):
+def number_of_subscribers(subreddit):
     headers = {'User-agent': 'test'}
-    responce = requests.get(f'http://www.reddit.com/r/{subreddit}/about.json', headers=headers)
+    responce = requests.get('http://www.reddit.com/r/{}/about.json'
+                            .format(subreddit),
+                            headers=headers)
     if responce.status_code == 200:
         return responce.json()['data']['subscribers']
     else:
         return 0
-
-
-
-if __name__ == "__main__":
-    numbers_of_subscribers('programming')
